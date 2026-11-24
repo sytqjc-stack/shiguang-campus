@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f7f2" />
+  <title>拾光 — 校园失物招领</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="拾光首页"><span class="brand-mark">拾</span><span>拾光</span></a>
+    <nav class="main-nav" aria-label="主导航">
+      <a class="active" href="#board">失物广场</a>
+      <a href="#how">使用说明</a>
+    </nav>
+    <div class="top-actions"><button class="button button-outline" id="messagesBtn">消息 <span class="tiny-count" id="messageCount">0</span></button><button class="button button-outline" id="myPostsBtn">我的发布 <span class="tiny-count" id="myCount">0</span></button><button class="button button-dark" id="headerPostBtn"><span>＋</span> 发布信息</button></div>
+    <button class="mobile-menu" id="mobilePostBtn" aria-label="发布信息">＋</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> 校园互助 · 让善意被看见</div>
+        <h1>丢失的东西，<br><em>总会找到回家的路。</em></h1>
+        <p class="hero-description">在这里发布线索，让每一份拾获都能被看见。<br>一点点信息，就可能帮同学找回重要的东西。</p>
+        <div class="hero-buttons"><button class="button button-dark button-large" id="heroPostBtn">发布失物 / 招领 <span>↗</span></button><a class="text-link" href="#board">看看最近线索 <span>↓</span></a></div>
+        <div class="hero-proof"><div class="avatar-stack"><span>林</span><span>陈</span><span>周</span><span>＋</span></div><span>每一条线索，都让重逢更近一步</span></div>
+      </div>
+      <div class="hero-art" aria-label="拾光校园互助插画">
+        <div class="sun"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="note-card note-card-back"><span class="note-icon purple">▣</span><span class="note-line wide"></span><span class="note-line"></span></div>
+        <div class="note-card note-card-front"><span class="note-icon yellow">✳</span><div><strong>找到了！</strong><small>校园卡 · 图书馆</small></div><span class="check">✓</span></div>
+        <div class="plant plant-left"><i></i><i></i><i></i><b></b></div><div class="plant plant-right"><i></i><i></i><i></i><b></b></div>
+        <div class="art-label"><span class="label-dot"></span> 每一次归还，都值得记录</div>
+      </div>
+    </section>
+
+    <section class="stat-strip" aria-label="平台数据">
+      <div><strong id="totalCount">08</strong><span>条校园线索</span></div><i></i><div><strong id="openCount">06</strong><span>正在寻找中</span></div><i></i><div><strong>100%</strong><span>善意不设门槛</span></div>
+      <p>今天也许就是它回家的日子 <span>✳</span></p>
+    </section>
+
+    <section class="board section-wrap" id="board">
+      <div class="section-heading"><div><div class="eyebrow muted-eyebrow">THE CAMPUS BOARD</div><h2>校园线索<span class="heading-star">✳</span></h2><p>每一条信息，都可能是找回它的关键。</p></div><button class="button button-green" id="boardPostBtn">＋ 发布一条线索</button></div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="线索类型"><button class="tab active" data-type="all">全部线索 <span id="allTabCount">08</span></button><button class="tab" data-type="lost">我丢失的</button><button class="tab" data-type="found">我捡到的</button></div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索物品、地点或关键词…" /><kbd>⌘ K</kbd></label>
+      </div>
+      <div class="filter-row"><div class="category-filters" id="categoryFilters"><button class="filter-chip active" data-category="全部">全部类别</button><button class="filter-chip" data-category="数码产品">数码产品</button><button class="filter-chip" data-category="校园卡证">校园卡证</button><button class="filter-chip" data-category="日常用品">日常用品</button><button class="filter-chip" data-category="书籍文具">书籍文具</button><button class="filter-chip" data-category="其他">其他</button></div><button class="sort-button" id="sortBtn">最近发布 <span>⌄</span></button></div>
+      <div class="match-banner"><div class="match-spark">✳</div><div><strong>也许它们正在互相寻找</strong><span>根据物品类别、关键词与地点，为你整理了可能相关的线索。</span></div><button id="showMatchesBtn">查看智能匹配 <span>→</span></button></div>
+      <div class="listing-grid" id="listingGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>暂时没有找到相关线索</h3><p>换个关键词试试，或发布一条新线索。</p><button class="button button-green" id="emptyPostBtn">发布线索</button></div>
+      <button class="load-more" id="loadMoreBtn">查看全部线索 <span>↓</span></button>
+    </section>
+
+    <section class="how-section" id="how"><div class="how-inner"><div><div class="eyebrow muted-eyebrow">A LITTLE HELP GOES A LONG WAY</div><h2>让归还这件事，<br><em>简单一点。</em></h2><p>发布线索、确认特征、约定交接。<br>重要的个人信息，只在双方确认后沟通。</p><button class="button button-dark" id="howPostBtn">现在发布线索 <span>↗</span></button></div><div class="steps"><div class="step"><span>01</span><div><strong>写下线索</strong><p>描述物品特征、时间和大致地点。</p></div><b>↗</b></div><div class="step"><span>02</span><div><strong>看看是否匹配</strong><p>按类别、关键词和地点找到相关信息。</p></div><b>↗</b></div><div class="step"><span>03</span><div><strong>确认后再交接</strong><p>核对细节，约在安全的公共地点归还。</p></div><b>↗</b></div></div></div></section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="brand-mark">拾</span><span>拾光</span></a><span>把善意，传递到校园的每个角落。</span><span class="footer-right">校园互助 · 请勿公开敏感个人信息</span></footer>
+
+  <dialog id="postDialog" class="dialog"><form id="postForm" method="dialog"><div class="dialog-head"><div><div class="eyebrow muted-eyebrow">LEAVE A CLUE</div><h2>发布一条线索</h2></div><button type="button" class="close-button" data-close="postDialog" aria-label="关闭">×</button></div><div class="form-type"><label><input type="radio" name="type" value="lost" checked><span>我丢失了</span></label><label><input type="radio" name="type" value="found"><span>我捡到了</span></label></div><div class="form-grid"><label>物品名称 <b>*</b><input name="title" required maxlength="30" placeholder="例如：黑色无线耳机" /></label><label>物品类别 <b>*</b><select name="category" required><option value="数码产品">数码产品</option><option value="校园卡证">校园卡证</option><option value="日常用品">日常用品</option><option value="书籍文具">书籍文具</option><option value="其他">其他</option></select></label><label>发现 / 丢失地点 <b>*</b><input name="location" required maxlength="40" placeholder="例如：图书馆二楼" /></label><label>大致时间 <b>*</b><input name="time" required type="datetime-local" /></label><label class="full-field">特征描述 <b>*</b><textarea name="description" required maxlength="240" rows="3" placeholder="描述颜色、外观或其他特征。请保留一两项细节用于认领核对。"></textarea></label><label class="full-field">联系备注 <span class="optional">选填 · 请勿填写手机号等敏感信息</span><input name="contact" maxlength="60" placeholder="例如：可通过站内留言联系" /></label></div><div class="privacy-note"><span>⌑</span><p><strong>保护隐私</strong>：本演示版信息仅保存在当前浏览器中。请勿填写身份证号、手机号、宿舍门牌等个人敏感信息。</p></div><div class="dialog-actions"><button type="button" class="button button-outline" data-close="postDialog">取消</button><button class="button button-dark" type="submit">发布线索 <span>↗</span></button></div></form></dialog>
+
+  <dialog id="detailDialog" class="dialog detail-dialog"><div id="detailContent"></div></dialog>
+  <dialog id="chatDialog" class="dialog chat-dialog"><div class="chat-shell"><aside class="chat-sidebar"><div class="chat-sidebar-head"><div><div class="eyebrow muted-eyebrow">CAMPUS MESSAGES</div><h2>站内消息</h2></div><button class="close-button" data-close="chatDialog" aria-label="关闭">×</button></div><label class="chat-search">⌕ <input id="chatSearch" placeholder="搜索对话" /></label><div class="conversation-list" id="conversationList"></div><div class="chat-local-note">◉ 消息保存在本机浏览器</div></aside><section class="chat-main" id="chatMain"><div class="chat-empty"><span>✳</span><strong>让线索继续往前一步</strong><p>选择一条对话，或从线索详情联系发布者。</p></div></section></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
